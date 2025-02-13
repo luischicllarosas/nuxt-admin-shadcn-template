@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   experimental: { typedPages: true },
   future: { compatibilityVersion: 4 },
   devtools: { enabled: true },
+  ssr: false,
   tailwindcss: {
     exposeConfig: true,
     editorSupport: true,

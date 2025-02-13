@@ -37,9 +37,7 @@
         </div>
       </main>
 
-      <footer class="bg-gray-300 p-4 text-center">
-        <p>&copy; 2023 Mi Aplicación. Todos los derechos reservados.</p>
-      </footer>
+      <LayoutFoot />
     </div>
   </div>
 </template>

@@ -1,14 +1,15 @@
 <script lang="ts" setup></script>
 
 <template>
-  <footer class="bg-gray-300 p-4 text-center">
+  <!-- <footer class="bg-gray-300 p-4 text-center">
     <p>&copy; 2023 Mi Aplicación. Todos los derechos reservados.</p>
-  </footer>
+  </footer> -->
   <UiContainer
     as="footer"
-    class="flex flex-col items-center justify-between gap-7 py-12 lg:flex-row"
+    class="flex flex-col items-center justify-between gap-7 py-5 lg:flex-row"
   >
     <NuxtLink to="#" class="flex items-center gap-3">
+      Soy el footer
       <!-- eslint-disable-next-line vue/html-self-closing -->
       <!-- <img
             src="/icon.png"
@@ -21,7 +22,7 @@
     </NuxtLink>
 
     <p class="text-muted-foreground">
-      <!-- &copy; {{ new Date().getFullYear() }} {{ COMPANY_NAME }}. All rights reserved. -->
+      &copy; {{ new Date().getFullYear() }} {{ $config.public.COMPANY_NAME }}. All rights reserved.
     </p>
   </UiContainer>
 </template>

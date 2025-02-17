@@ -11,7 +11,8 @@ export default defineNuxtConfig({
     // Configs
     runtimeConfig: {
         public: {
-            API_URL: process.env.API_URL
+            API_URL: process.env.API_URL,
+            API_BASE_URL: process.env.API_BASE_URL
         },
         private: {
             API_KEY: process.env.API_KEY
@@ -40,6 +41,14 @@ export default defineNuxtConfig({
             { from: "tailwind-variants", name: "tv" },
             { from: "tailwind-variants", name: "VariantProps", type: true },
             { from: "vue-sonner", name: "toast", as: "useSonner" }
+        ],
+        dirs: [
+            // Scan top-level modules
+            "composables",
+            // ... or scan modules nested one level deep with a specific name and file extension
+            "composables/*/index.{ts,js,mjs,mts}",
+            // ... or scan all modules within given directory
+            "composables/**"
         ]
     },
     app: {

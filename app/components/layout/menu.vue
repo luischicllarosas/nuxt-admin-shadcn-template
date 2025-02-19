@@ -111,7 +111,7 @@
 
 <script lang="ts" setup>
     const search = ref<string>("");
-    const router = useRouter();
+    const authStore = useAuthStore();
 
     const user = {
         avatar: "https://randomuser.me/api/portraits/med/men/2.jpg",
@@ -149,5 +149,5 @@
         }
     ];
 
-    const onLogout = () => useLogout();
+    const onLogout = () => authStore.logout();
 </script>

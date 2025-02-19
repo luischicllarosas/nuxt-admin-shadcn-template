@@ -19,7 +19,7 @@ export const useLogin = (values: { email: string; password: string }) => {
 };
 
 export const useLogout = () => {
-    const { onFetchResponse, onFetchError } = apiFetch("/auth/logout").get();
+    const { onFetchResponse, onFetchError } = apiFetch("/auth/logout").post();
 
     onFetchResponse(() => {
         // useSonner("Logout ", {
@@ -34,9 +34,25 @@ export const useLogout = () => {
     });
 };
 
-export const useCheckSession = () => {
-    const isAuthenticated = ref();
-    const checkAuth = ref();
-
-    return { isAuthenticated, checkAuth };
+export const useCheckSession = async () => {
+    // const config = useRuntimeConfig();
+    // const isAuthenticated = ref();
+    // const checkAuth = ref();
+    // const response = await $fetch(config.public.api_base + "/auth/session");
+    // // const { response, data, head, text, onFetchResponse, onFetchError } = await apiFetch("/auth/session").get();
+    // return { isAuthenticated, checkAuth };
+    // try {
+    //     const response = await $fetch(config.public.api_base + "/auth/session", {
+    //         method: "GET",
+    //         credentials: "include" // Enviar cookies con la solicitud
+    //     });
+    //     if (response.user) {
+    //         this.user = response.user;
+    //         this.isAuthenticated = true;
+    //     } else {
+    //         useLogout();
+    //     }
+    // } catch (error) {
+    //     useLogout();
+    // }
 };

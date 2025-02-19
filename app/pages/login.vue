@@ -44,10 +44,11 @@
 </template>
 
 <script lang="ts" setup>
+    import { useAuthStore } from "~/stores/auth.store";
     import { object, string } from "yup";
     import type { InferType } from "yup";
 
-    const router = useRouter();
+    const authStore = useAuthStore();
 
     definePageMeta({
         layout: "auth"
@@ -67,7 +68,8 @@
         validationSchema: LoginSchema
     });
 
-    const submit = handleSubmit((values) => useLogin(values));
+    // const submit = handleSubmit((values) => useLogin(values));
+    const submit = handleSubmit((values) => authStore.login(values));
 
     const signInWithGoogle = () => {
         useSonner("Logged in successfully!", {

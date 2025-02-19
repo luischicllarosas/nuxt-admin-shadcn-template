@@ -1,19 +1,19 @@
 <template>
-  <ConfigProvider :use-id="useIdFunction">
-    <div>
-      <NuxtLoadingIndicator />
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
-      <!-- Delete the toast that you don't need -->
-      <UiVueSonner />
-      <UiNotivue />
-    </div>
-  </ConfigProvider>
+    <ConfigProvider :use-id="useIdFunction">
+        <div>
+            <NuxtLoadingIndicator />
+            <NuxtLayout>
+                <NuxtPage />
+            </NuxtLayout>
+            <!-- Delete the toast that you don't need -->
+            <UiVueSonner />
+            <UiNotivue />
+        </div>
+    </ConfigProvider>
 </template>
 
 <script setup lang="ts">
-  import { ConfigProvider } from "radix-vue";
+    import { ConfigProvider } from "radix-vue";
 
-  const useIdFunction = () => useId()!;
+    const useIdFunction = () => useId()!;
 </script>

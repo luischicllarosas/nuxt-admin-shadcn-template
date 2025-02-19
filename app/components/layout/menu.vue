@@ -96,7 +96,7 @@
                         </div>
                         <UiTooltip>
                             <UiTooltipTrigger as-child>
-                                <UiButton class="ml-auto shrink-0" size="icon-sm" variant="ghost">
+                                <UiButton class="ml-auto shrink-0" size="icon-sm" variant="ghost" @click="onLogout">
                                     <Icon name="lucide:log-out" class="size-4 text-muted-foreground" />
                                 </UiButton>
                             </UiTooltipTrigger>
@@ -111,6 +111,7 @@
 
 <script lang="ts" setup>
     const search = ref<string>("");
+    const router = useRouter();
 
     const user = {
         avatar: "https://randomuser.me/api/portraits/med/men/2.jpg",
@@ -119,9 +120,9 @@
     };
 
     const topNav = [
-        { title: "Home", icon: "lucide:home", link: "/" },
+        { title: "Dashboard", icon: "lucide:home", link: "/" },
         {
-            title: "Dashboard",
+            title: "Comprobantes",
             icon: "lucide:bar-chart-3",
             items: [
                 { title: "Overview", link: "#" },
@@ -130,9 +131,9 @@
                 { title: "Reports", link: "#" }
             ]
         },
-        { title: "Projects", icon: "lucide:folder-dot", link: "#" },
-        { title: "Tasks", icon: "lucide:list-checks", link: "#" },
-        { title: "Users", icon: "lucide:users", link: "#" }
+        { title: "Auditoria", icon: "lucide:activity", link: "/audit" },
+        { title: "Users", icon: "lucide:users", link: "#" },
+        { title: "Tablas", icon: "lucide:folder-dot", link: "/tablas" }
     ];
     const bottomNav = [
         { title: "Support", icon: "lucide:life-buoy", link: "#" },
@@ -147,4 +148,6 @@
             ]
         }
     ];
+
+    const onLogout = () => useLogout();
 </script>

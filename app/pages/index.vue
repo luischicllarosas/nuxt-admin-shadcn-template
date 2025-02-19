@@ -21,6 +21,8 @@
 <script lang="ts" setup>
     import schema from "zod";
 
+    useListCredentials();
+
     const { handleSubmit } = useForm({
         validationSchema: toTypedSchema(
             schema.object({

@@ -1,5 +1,5 @@
 <script lang="ts" setup></script>
 
-<template>Dashboard</template>
+<template>Receipts</template>
 
 <style lang="scss" scoped></style>

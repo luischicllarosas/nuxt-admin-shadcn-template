@@ -67,26 +67,22 @@
                         </nav>
                     </div>
                     <!-- <div class="mt-auto rounded-lg bg-muted/50 p-4 text-sm">
-            <div class="flex items-center justify-between">
-              <p class="font-semibold">Used space</p>
-              <UiButton class="size-6" size="icon-sm" variant="ghost">
-                <Icon name="lucide:x" class="size-4 text-muted-foreground" />
-              </UiButton>
-            </div>
-            <p class="mt-3 text-muted-foreground">
-              Your team has used 80% of your available space. Need more?
-            </p>
-            <UiProgress class="my-4 h-2" :model-value="80" />
+                        <div class="flex items-center justify-between">
+                            <p class="font-semibold">Used space</p>
+                            <UiButton class="size-6" size="icon-sm" variant="ghost">
+                                <Icon name="lucide:x" class="size-4 text-muted-foreground" />
+                            </UiButton>
+                        </div>
+                        <p class="mt-3 text-muted-foreground">Your team has used 80% of your available space. Need more?</p>
+                        <UiProgress class="my-4 h-2" :model-value="80" />
 
-            <div class="flex items-center gap-1">
-              <UiButton class="px-2" variant="ghost" size="sm">Dismiss</UiButton>
-              <UiButton class="px-2 text-sky-500 hover:text-sky-600" variant="ghost" size="sm"
-                >Upgrade plan</UiButton
-              >
-            </div>
-          </div> -->
+                        <div class="flex items-center gap-1">
+                            <UiButton class="px-2" variant="ghost" size="sm">Dismiss</UiButton>
+                            <UiButton class="px-2 text-sky-500 hover:text-sky-600" variant="ghost" size="sm">Upgrade plan</UiButton>
+                        </div>
+                    </div> -->
                     <UiDivider class="my-6" />
-                    <div class="flex items-center gap-3 pb-8">
+                    <div class="mt-auto flex items-center gap-3 pb-8">
                         <div class="flex items-center gap-3">
                             <UiAvatar :src="user.avatar" class="size-10" />
                             <div>
@@ -110,14 +106,14 @@
 </template>
 
 <script lang="ts" setup>
-    const search = ref<string>("");
-    const authStore = useAuthStore();
+    const search = ref<string>("")
+    const authStore = useAuthStore()
 
     const user = {
         avatar: "https://randomuser.me/api/portraits/med/men/2.jpg",
         username: "Jane Doe",
         email: "muzcad@he.tg"
-    };
+    }
 
     const topNav = [
         { title: "Dashboard", icon: "lucide:home", link: "/" },
@@ -125,29 +121,30 @@
             title: "Comprobantes",
             icon: "lucide:bar-chart-3",
             items: [
-                { title: "Overview", link: "#" },
-                { title: "Notifications", link: "#" },
-                { title: "Analytics", link: "#" },
-                { title: "Reports", link: "#" }
+                { title: "Facturas", link: "/invoices" },
+                { title: "Boletas", link: "/receipts" }
+                // { title: "Analytics", link: "#" },
+                // { title: "Reports", link: "#" }
             ]
         },
         { title: "Auditoria", icon: "lucide:activity", link: "/audit" },
-        { title: "Users", icon: "lucide:users", link: "#" },
+        { title: "Usuarios", icon: "lucide:users", link: "#" },
         { title: "Tablas", icon: "lucide:folder-dot", link: "/tablas" }
-    ];
+    ]
     const bottomNav = [
-        { title: "Support", icon: "lucide:life-buoy", link: "#" },
+        { title: "Soporte", icon: "lucide:life-buoy", link: "#" },
         {
-            title: "Settings",
+            title: "Configuración",
             icon: "lucide:settings-2",
             items: [
-                { title: "Profile", link: "#" },
-                { title: "Account", link: "#" },
-                { title: "Security", link: "#" },
+                { title: "Credenciales", link: "/credentials" },
+                { title: "Perfil", link: "#" },
+                { title: "Cuenta", link: "#" },
+                { title: "Seguridad", link: "#" },
                 { title: "Billing", link: "#" }
             ]
         }
-    ];
+    ]
 
-    const onLogout = () => authStore.logout();
+    const onLogout = () => authStore.logout()
 </script>

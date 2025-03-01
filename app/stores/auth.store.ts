@@ -8,57 +8,74 @@ export const useAuthStore = defineStore("Auth", {
     actions: {
         async checkSession() {
             try {
-                const config = useRuntimeConfig();
-                const baseURL = config.public.api_base;
+                const config = useRuntimeConfig()
+                const baseURL = config.public.api_base
                 const response = await $fetch(baseURL + "auth/session", {
                     method: "GET",
                     credentials: "include"
-                });
+                })
 
                 if (response) {
-                    this.user = response;
-                    this.isAuthenticated = true;
+                    this.user = response
+                    this.isAuthenticated = true
                 } else {
-                    this.logout();
+                    this.logout()
                 }
             } catch (error) {
-                this.logout();
+                this.logout()
             } finally {
-                this.sessionChecked = true; // Se ha verificado la sesión, evitar llamadas innecesarias
+                this.sessionChecked = true // Se ha verificado la sesión, evitar llamadas innecesarias
             }
         },
         /**
          ** Auth methods ^
          */
-        async login(values: { email: string; password: string }) {
-            const { $myFetch } = useNuxtApp();
+        login(values: { email: string; password: string }, loading: Ref<boolean>) {
+            const { $myFetch } = useNuxtApp()
 
-            const { data, onFetchResponse, onFetchError } = $myFetch("auth/login").post(values);
+            loading.value = true
+
+            const { data, isFetching, onFetchResponse, onFetchError, onFetchFinally } = $myFetch("auth/login").post(values)
 
             onFetchResponse(() => {
-                this.user = data.value;
-                this.isAuthenticated = true;
-                navigateTo("/");
-            });
+                this.user = data.value
+                this.isAuthenticated = true
+                useSonner("Inicio de sesión exitoso.", {
+                    description: "Bienvenido de nuevo."
+                })
+                navigateTo("/")
+            })
+
+            onFetchFinally(() => {
+                loading.value = false
+            })
 
             onFetchError(() => {
                 useSonner("Hubo un error al intentar iniciar sesión.", {
                     description: "Revisa tus credenciales e intenta de nuevo."
-                });
-            });
+                })
+            })
+            return { data, isFetching }
         },
-        async logout() {
-            const config = useRuntimeConfig();
-            const baseURL = config.public.api_base;
-            //
-            await $fetch(baseURL + "auth/logout", {
-                method: "POST",
-                credentials: "include"
-            });
+        async logout(off?: boolean) {
+            try {
+                const config = useRuntimeConfig()
+                const baseURL = config.public.api_base
+                //
+                await $fetch(baseURL + "auth/logout", {
+                    method: "POST",
+                    credentials: "include"
+                })
 
-            this.user = null;
-            this.isAuthenticated = false;
-            navigateTo("/login");
+                this.user = null
+                this.isAuthenticated = false
+                navigateTo("/login")
+                if (!off) {
+                    useSonner("Cerraste sesión.", {
+                        description: "Vuelve pronto!."
+                    })
+                }
+            } catch (error) {}
         }
     }
-});
+})

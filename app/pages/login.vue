@@ -2,7 +2,7 @@
     <div class="flex h-screen items-center justify-between">
         <div class="w-full md:w-1/2">
             <div class="mx-auto w-full max-w-[330px] px-5">
-                <h1 class="text-2xl font-bold tracking-tight lg:text-3xl">Log in</h1>
+                <h1 class="text-2xl font-bold tracking-tight lg:text-3xl">Ingresar</h1>
                 <p class="mt-1 text-muted-foreground">Enter your email & password to log in.</p>
 
                 <form class="mt-10" @submit="submit">
@@ -14,7 +14,7 @@
                             <UiVeeInput label="Password" type="password" name="password" />
                         </div>
                         <div>
-                            <UiButton class="w-full" type="submit" text="Log in" />
+                            <UiButton class="w-full" type="submit" :text="loading ? 'Validando...' : 'Ingresar'" :loading="loading" />
                         </div>
                         <UiDivider label="OR" />
                         <UiButton variant="outline" type="button" @click="signInWithGoogle()">
@@ -44,36 +44,39 @@
 </template>
 
 <script lang="ts" setup>
-    import { useAuthStore } from "~/stores/auth.store";
-    import { object, string } from "yup";
-    import type { InferType } from "yup";
+    import { useAuthStore } from "~/stores/auth.store"
+    import { object, string } from "yup"
+    import type { InferType } from "yup"
 
-    const authStore = useAuthStore();
+    const authStore = useAuthStore()
+    const loading = ref(false)
 
     definePageMeta({
         layout: "auth"
-    });
+    })
 
     useSeoMeta({
         title: "Log in",
         description: "Enter your email & password to log in."
-    });
+    })
 
     const LoginSchema = object({
         email: string().email().required().label("Email"),
         password: string().required().label("Password").min(8)
-    });
+    })
 
     const { handleSubmit, isSubmitting } = useForm<InferType<typeof LoginSchema>>({
         validationSchema: LoginSchema
-    });
+    })
 
     // const submit = handleSubmit((values) => useLogin(values));
-    const submit = handleSubmit((values) => authStore.login(values));
+    const submit = handleSubmit((values) => {
+        authStore.login(values, loading)
+    })
 
     const signInWithGoogle = () => {
         useSonner("Logged in successfully!", {
             description: "You have successfully logged in with Google."
-        });
-    };
+        })
+    }
 </script>

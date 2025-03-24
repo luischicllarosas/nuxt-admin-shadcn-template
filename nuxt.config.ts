@@ -2,22 +2,15 @@
  * Replace these with the details of your website
  */
 
-import { SITE_NAME, SITE_TITLE } from "./app/utils/seo";
+import { SITE_NAME, SITE_TITLE } from "./app/utils/seo"
 
 export default defineNuxtConfig({
     experimental: { typedPages: true },
     future: { compatibilityVersion: 4 },
     devtools: { enabled: true },
     // Configs
-    runtimeConfig: {
-        public: {
-            api_base: process.env.API_BASE_URL
-        },
-        private: {
-            API_KEY: process.env.API_KEY
-        }
-    },
-    ssr: false,
+    runtimeConfig: { public: { api_base: process.env.API_BASE_URL } },
+    // ssr: false,
     tailwindcss: {
         exposeConfig: true,
         editorSupport: true,
@@ -83,4 +76,4 @@ export default defineNuxtConfig({
         "v-wave/nuxt"
     ],
     compatibilityDate: "2024-07-09"
-});
+})

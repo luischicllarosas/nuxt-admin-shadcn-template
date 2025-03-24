@@ -3,10 +3,10 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "sunday"
-      time: "06:00"
-      timezone: "America/Jamaica"
+    - package-ecosystem: "npm"
+      directory: "/"
+      schedule:
+          interval: "monthly"
+          day: "sunday"
+          time: "06:00"
+          timezone: "America/Jamaica"

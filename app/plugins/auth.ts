@@ -1,5 +1,5 @@
-import { useFetch as myFetch } from "@vueuse/core";
-import { useState } from "#app";
+import { useFetch as myFetch } from "@vueuse/core"
+import { useState } from "#app"
 
 // export default defineNuxtPlugin(async (nuxtApp) => {
 //     const authChecked = useState("authChecked", () => false);
@@ -58,14 +58,14 @@ import { useState } from "#app";
 // });
 
 export default defineNuxtPlugin(async (nuxtApp) => {
-    const authChecked = useState("authChecked", () => false);
-    const authStore = useAuthStore();
-    await authStore.checkSession();
+    const authChecked = useState("authChecked", () => false)
+    const authStore = useAuthStore()
+    await authStore.checkSession()
 
     nuxtApp.hooks.hook("app:mounted", async () => {
         // Espera a la hidratación
         if (!authChecked.value) {
-            const config = useRuntimeConfig();
+            const config = useRuntimeConfig()
 
             // try {
             //     const user = await $fetch(config.public.api_base + "auth/session");
@@ -84,7 +84,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
             // }
             // }
 
-            authChecked.value = true;
+            authChecked.value = true
         }
-    });
-});
+    })
+})

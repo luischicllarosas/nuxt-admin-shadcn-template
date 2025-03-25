@@ -18,6 +18,7 @@ export default defineNuxtConfig({
             end_session: process.env.END_SESSION_INFO
         }
     },
+    // This project only works on SSR FALSE
     ssr: false,
     tailwindcss: {
         exposeConfig: true,
@@ -80,8 +81,7 @@ export default defineNuxtConfig({
         "@nuxt/fonts",
         // Just in case you need it
         "@pinia/nuxt",
-        "v-wave/nuxt",
-        "@nuxtjs/i18n"
+        "v-wave/nuxt"
     ],
     compatibilityDate: "2024-07-09"
 })

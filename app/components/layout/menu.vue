@@ -118,30 +118,26 @@
     const topNav = [
         { title: "Dashboard", icon: "lucide:home", link: "/" },
         {
-            title: "Comprobantes",
+            title: "Item A",
             icon: "lucide:bar-chart-3",
             items: [
-                { title: "Facturas", link: "/invoices" },
-                { title: "Boletas", link: "/receipts" }
+                { title: "Item 1", link: "#" },
+                { title: "Item 2", link: "#" }
                 // { title: "Analytics", link: "#" },
                 // { title: "Reports", link: "#" }
             ]
         },
-        { title: "Auditoria", icon: "lucide:activity", link: "/audit" },
-        { title: "Usuarios", icon: "lucide:users", link: "#" },
-        { title: "Tablas", icon: "lucide:folder-dot", link: "/tablas" }
+        { title: "Audit", icon: "lucide:activity", link: "/audit" },
+        { title: "Tables", icon: "lucide:folder-dot", link: "#" }
     ]
     const bottomNav = [
-        { title: "Soporte", icon: "lucide:life-buoy", link: "#" },
+        { title: "Support", icon: "lucide:life-buoy", link: "#" },
         {
-            title: "Configuración",
+            title: "Settings",
             icon: "lucide:settings-2",
             items: [
-                { title: "Credenciales", link: "/credentials" },
-                { title: "Perfil", link: "#" },
-                { title: "Cuenta", link: "#" },
-                { title: "Seguridad", link: "#" },
-                { title: "Billing", link: "#" }
+                { title: "Profile", link: "#" },
+                { title: "Account", link: "#" }
             ]
         }
     ]

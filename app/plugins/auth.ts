@@ -58,33 +58,6 @@ import { useState } from "#app"
 // });
 
 export default defineNuxtPlugin(async (nuxtApp) => {
-    const authChecked = useState("authChecked", () => false)
     const authStore = useAuthStore()
     await authStore.checkSession()
-
-    nuxtApp.hooks.hook("app:mounted", async () => {
-        // Espera a la hidratación
-        if (!authChecked.value) {
-            const config = useRuntimeConfig()
-
-            // try {
-            //     const user = await $fetch(config.public.api_base + "auth/session");
-            //     nuxtApp.provide("user", user);
-            // } catch (error) {
-            //     useSonner("Hubo un error al intentar iniciar sesión.", {
-            //         description: "Su sesión ha expirado o no es válida. Por favor, inicie sesión de nuevo."
-            //     });
-            // if (error.response && error.response.status === 401) {
-            //     // Manejar el error 401 aquí (redirigir, limpiar localStorage, etc.)
-            //     localStorage.clear();
-            //     window.location.href = window.location.origin + "/login";
-            // } else {
-            //     // Manejar otros errores
-            //     console.error("Error al verificar la sesión:", error);
-            // }
-            // }
-
-            authChecked.value = true
-        }
-    })
 })

@@ -3,15 +3,15 @@
         { icon: "lucide:sun", title: "Light", value: "light" },
         { icon: "lucide:moon", title: "Dark", value: "dark" },
         { icon: "lucide:laptop", title: "System", value: "system" }
-    ];
-    const colorMode = useColorMode();
+    ]
+    const colorMode = useColorMode()
     const setTheme = (val: string) => {
-        colorMode.preference = val;
-    };
+        colorMode.preference = val
+    }
 
     const currentIcon = computed(() => {
-        return modes.find((m) => m.value === colorMode?.preference)?.icon;
-    });
+        return modes.find((m) => m.value === colorMode?.preference)?.icon
+    })
 </script>
 
 <template>

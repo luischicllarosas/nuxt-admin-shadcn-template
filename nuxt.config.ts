@@ -9,8 +9,16 @@ export default defineNuxtConfig({
     future: { compatibilityVersion: 4 },
     devtools: { enabled: true },
     // Configs
-    runtimeConfig: { public: { api_base: process.env.API_BASE_URL } },
-    // ssr: false,
+    runtimeConfig: {
+        public: {
+            api_base: process.env.API_BASE_URL,
+            // This is optimized for sessions
+            end_login: process.env.END_SESSION_LOGIN,
+            end_logout: process.env.END_SESSSION_LOGOUT,
+            end_session: process.env.END_SESSION_INFO
+        }
+    },
+    ssr: false,
     tailwindcss: {
         exposeConfig: true,
         editorSupport: true,
@@ -60,7 +68,6 @@ export default defineNuxtConfig({
             ]
         }
     },
-
     modules: [
         "@vee-validate/nuxt",
         "notivue/nuxt",
@@ -73,7 +80,8 @@ export default defineNuxtConfig({
         "@nuxt/fonts",
         // Just in case you need it
         "@pinia/nuxt",
-        "v-wave/nuxt"
+        "v-wave/nuxt",
+        "@nuxtjs/i18n"
     ],
     compatibilityDate: "2024-07-09"
 })
